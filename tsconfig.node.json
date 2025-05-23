@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-mern",
+  "compilerOptions": {
+    // Removed invalid 'version' compiler option
+  },
+  "description": "MERN Stack Portfolio Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [
+    "mern",
+    "portfolio",
+    "react"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}
