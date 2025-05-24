@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// Use Render backend URL in production, fallback to localhost for development
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
-// Create axios instance
 const api = axios.create({
   baseURL: API_URL,
   headers: {
@@ -10,9 +10,7 @@ const api = axios.create({
   },
 });
 
-// Contact form services
 export const contactService = {
-  // Submit contact form
   submitContactForm: async (formData) => {
     try {
       const response = await api.post('/contact', formData);
