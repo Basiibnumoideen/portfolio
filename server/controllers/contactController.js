@@ -34,33 +34,35 @@ const submitContact = async (req, res) => {
     }
 
     // 2. Enhanced WhatsApp notification with error handling
-    try {
-      console.log('Sending to WhatsApp bot:', { name, email, subject, message });
-      
-      const whatsappResponse = await axios.post(
+// Update the WhatsApp notification part:
+try {
+    console.log('Sending to WhatsApp bot:', { name, email, subject, message });
+    
+    const whatsappResponse = await axios.post(
         process.env.WHATSAPP_BOT_URL, 
         {
-          name,
-          email,
-          subject, // Explicitly included
-          message
+            name,
+            email,
+            subject,
+            message
         },
         {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          timeout: 5000 // 5 second timeout
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: 5000
         }
-      );
-      
-      console.log('WhatsApp bot response:', whatsappResponse.data);
-    } catch (whatsappError) {
-      console.error('WhatsApp notification failed:', {
+    );
+    
+    console.log('WhatsApp bot response:', whatsappResponse.data);
+} catch (whatsappError) {
+    console.error('WhatsApp notification failed:', {
         message: whatsappError.message,
         response: whatsappError.response?.data,
         config: whatsappError.config?.data
-      });
-    }
+    });
+    // Continue even if WhatsApp fails
+}
 
     res.status(201).json({
       success: true,
