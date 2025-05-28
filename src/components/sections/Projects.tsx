@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useAnimateOnScroll, staggerChildren, fadeInUp } from '../../hooks/useAnimateOnScroll';
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -7,74 +7,79 @@ import { ExternalLink, Github } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    title: 'Modern E-Commerce Platform',
-    category: 'Web Design',
-    image: 'https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    description: 'A fully responsive e-commerce site with custom animations and seamless checkout flow',
-    technologies: ['React', 'Node.js', 'Stripe', 'Tailwind CSS'],
-    link: 'https://example.com',
-    github: 'https://github.com'
+   title: 'ICE Institute Website',
+  category: 'Web Design',
+  image: 'https://media.istockphoto.com/id/1493075632/photo/technician-repairing-the-cell-phone-parts-and-tools-for-recovery-repair-phone-smartphone.jpg?s=612x612&w=0&k=20&c=neHGcd8G5Rhr03PmApjSsxkwMijtPMTgfUq0UrT3tVE=',
+  description: 'A modern, responsive website developed for the Institute of Communication and Electronics (ICE) featuring sections like Our Gallery, About, Contact, and more.',
+  technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PhP'],
+  link: 'https://icekerala.com/',
+  github: 'https://github.com/yourusername/ice-institute-project'
   },
   {
     id: 2,
-    title: 'Travel Companion App',
-    category: 'App Development',
-    image: 'https://images.pexels.com/photos/7345444/pexels-photo-7345444.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    description: 'Mobile application for travel enthusiasts with trip planning and local recommendations',
-    technologies: ['React Native', 'Firebase', 'Google Maps API'],
-    link: 'https://example.com',
-    github: 'https://github.com'
+    title: 'Portfolio WhatsApp Integration',
+  category: 'Web App',
+  image: 'https://media.istockphoto.com/id/1395757652/photo/hashtag-sign-symbol-in-social-media-notification-icon.jpg?s=612x612&w=0&k=20&c=MvXjiAPnxO8fO_9AXzEuuRp6vaiXrog5OpJ9aLRCh-A=',
+  description: 'A React-based portfolio with a WhatsApp bot integration using Baileys, enabling direct messaging for contact forms and real-time communication.',
+  technologies: ['React', 'Node.js', 'Baileys', 'MongoDB'],
+  link: 'https://your-portfolio-url.com',
+  github: 'https://github.com/yourusername/yourrepo'
   },
   {
     id: 3,
-    title: 'Financial Dashboard',
-    category: 'Web Design',
-    image: 'https://images.pexels.com/photos/7821579/pexels-photo-7821579.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    description: 'Interactive dashboard with data visualization for financial analysis and insights',
-    technologies: ['Vue.js', 'D3.js', 'Express', 'MongoDB'],
-    link: 'https://example.com',
-    github: 'https://github.com'
+  title: 'Vandalz Portfolio website',
+  category: 'Web Design',
+  image: 'https://media.istockphoto.com/id/1410274487/photo/digital-marketing-concept.jpg?s=612x612&w=0&k=20&c=-2ZryLW1AyEMWMBdfMeA_v-Dq7ZcM3RQymp6fGR65kE=',
+  description: 'Creative agency offering digital marketing, 3D modeling, web, and graphic design to boost brand impact and growth.',
+  technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+  link: 'https://your-live-site.com',  // Replace with your actual hosted site
+  github: 'https://github.com/yourusername/vandalz-clothing' 
   },
   {
     id: 4,
-    title: 'Fitness Tracker',
-    category: 'App Development',
-    image: 'https://images.pexels.com/photos/5428833/pexels-photo-5428833.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    description: 'Personalized workout app with progress tracking and custom exercise routines',
-    technologies: ['Flutter', 'Firebase', 'Health Kit'],
-    link: 'https://example.com',
-    github: 'https://github.com'
+   title: 'Club Management System',
+  category: 'Web & Mobile App',
+  image: 'https://media.istockphoto.com/id/1180620748/photo/soccer-coach-high-fiving-with-boy-during-practice.jpg?s=612x612&w=0&k=20&c=MgvGotdhL8ohWNJcfC-DiRW9BimbSnLUteERN155hYs=',
+  description: 'A full-stack platform for managing club operations including ground bookings, member and batch registrations, and notice updates, all under admin control.',
+  technologies: ['Python', 'Django', 'Flutter', 'SQLite'],
+  link: 'https://example.com', // replace with live demo link if available
+  github: 'https://github.com/yourusername/club-management-system' // replace with actual repo
   },
   {
     id: 5,
-    title: 'Restaurant Booking System',
-    category: 'Web Design',
-    image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    description: 'Elegant booking platform for restaurants with real-time availability and custom admin dashboard',
-    technologies: ['Next.js', 'PostgreSQL', 'Tailwind CSS'],
-    link: 'https://example.com',
-    github: 'https://github.com'
+    title: 'College Alumni Network',
+  category: 'Web Design',
+  image: 'https://media.istockphoto.com/id/2164232127/photo/cropped-hands-of-people-throwing-mortarboards-against-clear-sky.jpg?s=612x612&w=0&k=20&c=fnLryvotqB5UoXkMXFSBBX-iOKPKvSw2-kiCQKPUN7c=',
+  description: 'A Django-based web app that connects former and current students of the college. Features include alumni registration, event updates, job postings, and a message board for networking.',
+  technologies: ['Python', 'Django', 'HTML', 'CSS', 'SQLite'],
+  link: 'https://example.com', // replace with live demo if available
+  github: 'https://github.com/yourusername/college-alumni-network'
   },
   {
     id: 6,
-    title: 'Smart Home Controller',
-    category: 'App Development',
-    image: 'https://images.pexels.com/photos/3935551/pexels-photo-3935551.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    description: 'IoT app for controlling smart home devices with voice commands and automation scheduling',
-    technologies: ['React Native', 'Node.js', 'MQTT', 'WebSockets'],
-    link: 'https://example.com',
-    github: 'https://github.com'
+    title: 'AI Chatbot for WhatsApp',
+  category: 'Web App',
+  image: 'https://media.istockphoto.com/id/1488335095/vector/3d-vector-robot-chatbot-ai-in-science-and-business-technology-and-engineering-concept.jpg?s=612x612&w=0&k=20&c=MSxiR6V1gROmrUBe1GpylDXs0D5CHT-mn0Up8D50mr8=',
+  description: 'A feature-rich WhatsApp bot that supports AI-based chat (beta), language translation, weather and news updates, and file/image storage. Designed for seamless interaction and task automation through text commands.',
+  technologies: ['Node.js', 'Baileys', 'JavaScript'],
+  link: 'https://example.com', // Optional: your live demo link
+  github: 'https://github.com/yourusername/ai-whatsapp-chatbot'
   },
 ];
 
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState('All');
+  const [filteredProjects, setFilteredProjects] = useState(projects);
   const sectionAnimation = useAnimateOnScroll();
   const projectsAnimation = useAnimateOnScroll(staggerChildren);
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  useEffect(() => {
+    setFilteredProjects(
+      filter === 'All'
+        ? projects
+        : projects.filter(project => project.category === filter)
+    );
+  }, [filter]);
 
   const categories = ['All', ...new Set(projects.map(project => project.category))];
 
@@ -141,71 +146,74 @@ const Projects: React.FC = () => {
           animate={projectsAnimation.controls}
           variants={projectsAnimation.variants}
         >
-          {filteredProjects.map((project) => (
-            <motion.div
-              key={project.id}
-              className="card card-hover overflow-hidden bg-white rounded-xl"
-              variants={fadeInUp}
-              whileHover={{ 
-                y: -10,
-                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-              }}
-            >
-              <div className="relative overflow-hidden group h-48 md:h-64">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end justify-start p-6">
-                  <div>
-                    <span className="text-xs font-medium px-3 py-1 bg-primary-500 text-white rounded-full">
-                      {project.category}
-                    </span>
-                    <div className="flex space-x-3 mt-3">
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        aria-label="View GitHub Repository"
-                      >
-                        <Github className="h-5 w-5" />
-                      </motion.a>
-                      <motion.a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        aria-label="View Live Project"
-                      >
-                        <ExternalLink className="h-5 w-5" />
-                      </motion.a>
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                className="card card-hover overflow-hidden bg-white rounded-xl"
+                variants={fadeInUp}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                layout
+              >
+                <div className="relative overflow-hidden group h-48 md:h-64">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end justify-start p-6">
+                    <div>
+                      <span className="text-xs font-medium px-3 py-1 bg-primary-500 text-white rounded-full">
+                        {project.category}
+                      </span>
+                      <div className="flex space-x-3 mt-3">
+                        <motion.a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-colors"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          aria-label="View GitHub Repository"
+                        >
+                          <Github className="h-5 w-5" />
+                        </motion.a>
+                        <motion.a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white/20 transition-colors"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          aria-label="View Live Project"
+                        >
+                          <ExternalLink className="h-5 w-5" />
+                        </motion.a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {project.technologies.map((tech, index) => (
-                    <span 
-                      key={index} 
-                      className="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-600 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-800">{project.title}</h3>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.technologies.map((tech, index) => (
+                      <span 
+                        key={index} 
+                        className="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-600 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       </motion.div>
     </section>
