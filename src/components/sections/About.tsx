@@ -101,24 +101,13 @@ const About: React.FC = () => {
               Hello, I'm <span className="text-primary-600 ">BASI</span>
             </h3>
             <p className="text-gray-600 leading-relaxed">
-              Hello, I'm Muhammed Abdul Basith, a passionate web developer and tech
-               enthusiast with a growing expertise in Python Django, MERN stack, and creative digital solutions.
-                I'm currently pursuing my B.Sc. in Computer Science at Regional College, Mundamparamba, 
-                and have already built real-world projects that blend functionality,
-                 design, and innovation.
-              , a startup focused on web development, graphics design, motion graphics, 3D modeling, 
-              and digital marketing. With every project, I aim to push creative boundaries and deliver meaningful,
-               performance-driven results.
+              A passionate web developer and tech enthusiast with a strong foundation in Python Django, the MERN stack, and creative digital solutions. I'm currently pursuing my B.Sc. in Computer Science at Regional College, Mundamparamba, where I’ve developed real-world projects that seamlessly combine functionality, design, and innovation.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              I specialize in creating clean, modern, and responsive websites and applications
-              that not only look great but also perform exceptionally well. My passion lies in
-              the intersection of beautiful design and functional technology.
+              I'm also the founder of Vandalz Productions, a startup dedicated to transforming ideas into impactful digital experiences. Our services span web development, graphics design, motion graphics, 3D modeling, and digital marketing.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              When I'm not designing or coding, you can find me exploring new design trends,
-              attending tech conferences, or hiking in the great outdoors to find inspiration
-              for my next creative project.
+              I specialize in building clean, modern, and responsive websites and web applications that not only look visually stunning but also deliver high performance and usability. My passion lies at the intersection of elegant design and practical technology—creating solutions that are both beautiful and efficient.
             </p>
 
             <motion.div 
