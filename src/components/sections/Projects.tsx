@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAnimateOnScroll, staggerChildren, fadeInUp } from '../../hooks/useAnimateOnScroll';
 import { ExternalLink, Github } from 'lucide-react';
 
-// Project data
+// Demo projects array with 9 projects (more than 6)
 const projects = [
   {
     id: 1,
@@ -23,7 +23,7 @@ const projects = [
   description: 'A React-based portfolio with a WhatsApp bot integration using Baileys, enabling direct messaging for contact forms and real-time communication.',
   technologies: ['React', 'Node.js', 'Baileys', 'MongoDB'],
   link: 'https://your-portfolio-url.com',
-  github: 'https://github.com/yourusername/yourrepo'
+  github: 'https://github.com/Basiibnumoideen/webtoWhatsapp'
   },
   {
     id: 3,
@@ -65,23 +65,25 @@ const projects = [
   link: 'https://example.com', // Optional: your live demo link
   github: 'https://github.com/yourusername/ai-whatsapp-chatbot'
   },
+  
 ];
 
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState('All');
   const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [showAll, setShowAll] = useState(false);
   const sectionAnimation = useAnimateOnScroll();
   const projectsAnimation = useAnimateOnScroll(staggerChildren);
 
   useEffect(() => {
-    setFilteredProjects(
-      filter === 'All'
-        ? projects
-        : projects.filter(project => project.category === filter)
-    );
+    const filtered = filter === 'All' ? projects : projects.filter(p => p.category === filter);
+    setFilteredProjects(filtered);
+    setShowAll(false);
   }, [filter]);
 
-  const categories = ['All', ...new Set(projects.map(project => project.category))];
+  const categories = ['All', ...new Set(projects.map(p => p.category))];
+
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
 
   return (
     <section id="projects" className="section-padding bg-gray-50">
@@ -147,7 +149,7 @@ const Projects: React.FC = () => {
           variants={projectsAnimation.variants}
         >
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {displayedProjects.map((project) => (
               <motion.div
                 key={project.id}
                 className="card card-hover overflow-hidden bg-white rounded-xl"
@@ -215,6 +217,21 @@ const Projects: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* See More / See Less button */}
+        {filteredProjects.length > 6 && (
+          <div className="flex justify-center mt-10">
+            <motion.button
+              className="px-8 py-3 rounded-full bg-primary-600 text-white font-semibold shadow-md hover:bg-primary-700 transition-colors"
+              onClick={() => setShowAll(!showAll)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label={showAll ? "Show Less Projects" : "Show More Projects"}
+            >
+              {showAll ? 'Show Less Projects' : 'See More Projects'}
+            </motion.button>
+          </div>
+        )}
       </motion.div>
     </section>
   );
