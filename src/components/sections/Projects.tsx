@@ -39,21 +39,21 @@ const projects = [
     id: 4,
    title: 'Club Management System',
   category: 'Web & Mobile App',
-  image: 'https://media.istockphoto.com/id/1180620748/photo/soccer-coach-high-fiving-with-boy-during-practice.jpg?s=612x612&w=0&k=20&c=MgvGotdhL8ohWNJcfC-DiRW9BimbSnLUteERN155hYs=',
+  image: 'https://media.istockphoto.com/id/511438477/photo/assorted-sports-equipment.jpg?s=612x612&w=0&k=20&c=3eawSWoH7sFDcwDxc4wPaRlLEjpl7MDaJYsfxBTcUrY=',
   description: 'A full-stack platform for managing club operations including ground bookings, member and batch registrations, and notice updates, all under admin control.',
   technologies: ['Python', 'Django', 'Flutter', 'SQLite'],
   link: 'https://example.com', // replace with live demo link if available
-  github: 'https://github.com/yourusername/club-management-system' // replace with actual repo
+  github: 'https://github.com/Basiibnumoideen/Ground-Booking-system' // replace with actual repo
   },
   {
     id: 5,
     title: 'College Alumni Network',
   category: 'Web Design',
-  image: 'https://media.istockphoto.com/id/2164232127/photo/cropped-hands-of-people-throwing-mortarboards-against-clear-sky.jpg?s=612x612&w=0&k=20&c=fnLryvotqB5UoXkMXFSBBX-iOKPKvSw2-kiCQKPUN7c=',
+  image: 'https://media.istockphoto.com/id/1412052944/photo/education-and-graduation-concept.jpg?s=612x612&w=0&k=20&c=gQJ8cgSxPoOVJQ7xegSIvvNLsprHKpfX_lkYCXE80bw=',
   description: 'A Django-based web app that connects former and current students of the college. Features include alumni registration, event updates, job postings, and a message board for networking.',
   technologies: ['Python', 'Django', 'HTML', 'CSS', 'SQLite'],
   link: 'https://example.com', // replace with live demo if available
-  github: 'https://github.com/yourusername/college-alumni-network'
+  github: 'https://github.com/Basiibnumoideen/alumini-project'
   },
   {
     id: 6,
