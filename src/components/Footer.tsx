@@ -11,17 +11,17 @@ import {
 
 const socialLinks = [
   {
-    href: 'https://github.com/yourusername',
+    href: 'https://github.com/Basiibnumoideen',
     icon: <Github className="h-6 w-6" />,
     label: 'GitHub',
   },
   {
-    href: 'https://linkedin.com/in/yourusername',
+    href: 'https://www.linkedin.com/in/basiibnumoideen2003/',
     icon: <Linkedin className="h-6 w-6" />,
     label: 'LinkedIn',
   },
   {
-    href: 'https://instagram.com/yourusername',
+    href: 'https://www.instagram.com/basi.exe/',
     icon: <Instagram className="h-6 w-6" />,
     label: 'Instagram',
   },
